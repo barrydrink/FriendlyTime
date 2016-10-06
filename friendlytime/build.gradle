@@ -91,7 +91,7 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = 'bellabling-maven'
-        name = 'friendlytime'
+        name = 'friendly-time'
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ['Apache-2.0']
