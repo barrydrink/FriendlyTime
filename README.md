@@ -5,3 +5,17 @@
 
 
 # FriendlyTime
+
+Provides casual time strings for events in the past. E.g. "about 10 minutes ago".
+
+To use:
+
+```
+long timeNow = System.currentTimeMillis();
+long timeThen = timeNow - 5000;
+String friendlyTime = FriendlyTime.getFriendlyTime(timeNow, timeThen));
+
+//friendlyTime has value "seconds ago"
+```
+
+See also the unit tests.
