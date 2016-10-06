@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'jacoco-android'
 apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
 
 def siteUrl = 'https://github.com/bellabling/friendly-time'      // Homepage URL of the library
 def gitUrl = 'https://github.com/bellabling/friendly-time.git'   // Git repository URL
@@ -30,17 +31,39 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-task createJar(type: Copy) {
-    from('build/intermediates/bundles/release/classes.jar/')
-    into('build')
-    include('classes.jar')
-    rename('classes.jar', 'friendlytime.jar')
-}
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
 
-task deleteJar(type: Delete) {
-    delete 'build/friendlytime.jar'
+                name 'Provides casual time statements such as "about 10 minutes ago'
+                url siteUrl
+
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'barry'
+                        name 'Barry Drinkwater'
+                        email 'barry.drinkwater@gmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+
+                }
+            }
+        }
+    }
 }
-createJar.dependsOn(deleteJar, build)
 
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -50,7 +73,6 @@ task sourcesJar(type: Jar) {
 task javadoc(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-//    classpath += configurations.javadocDeps
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
@@ -58,31 +80,22 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }
 
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
 bintray {
     user = System.env.BINTRAY_USER_PERSONAL
     key = System.env.BINTRAY_APIKEY_PERSONAL
 
-//    configurations = ['archives']
-
-    filesSpec {
-        from 'build/friendlytime.jar'
-        into '.'
-    }
+    configurations = ['archives']
     pkg {
         repo = 'bellabling-maven'
         name = 'friendlytime'
-        licenses = ['Apache-2.0']
-        vcsUrl = gitUrl
         websiteUrl = siteUrl
-        publicDownloadNumbers = true
+        vcsUrl = gitUrl
+        licenses = ['Apache-2.0']
         publish = false
-        version {
-            name = version
-        }
     }
-}
-
-artifacts {
-    archives javadocJar
-    archives sourcesJar
 }
