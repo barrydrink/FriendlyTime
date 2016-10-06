@@ -1,5 +1,11 @@
 apply plugin: 'com.android.library'
 apply plugin: 'jacoco-android'
+apply plugin: 'com.github.dcendents.android-maven'
+
+def siteUrl = 'https://github.com/barrydrink/friendly-time'      // Homepage URL of the library
+def gitUrl = 'https://github.com/barrydrink/friendly-time.git'   // Git repository URL
+group = 'com.barrydrink'
+version = '0.0.1'
 
 android {
     compileSdkVersion 24
@@ -34,5 +40,59 @@ task createJar(type: Copy) {
 task deleteJar(type: Delete) {
     delete 'build/friendlytime.jar'
 }
-
 createJar.dependsOn(deleteJar, build)
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//    classpath += configurations.javadocDeps
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'jar'
+
+                name 'Provides casual time statements such as "about 10 minutes ago"'
+                url siteUrl
+
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'barry'
+                        name 'Barry Drinkwater'
+                        email 'barry.drinkwater@gmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+
+                }
+            }
+        }
+    }
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
