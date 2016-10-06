@@ -1,10 +1,11 @@
 apply plugin: 'com.android.library'
 apply plugin: 'jacoco-android'
 apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
 
-def siteUrl = 'https://github.com/barrydrink/friendly-time'      // Homepage URL of the library
-def gitUrl = 'https://github.com/barrydrink/friendly-time.git'   // Git repository URL
-group = 'com.barrydrink'
+def siteUrl = 'https://github.com/bellabling/friendly-time'      // Homepage URL of the library
+def gitUrl = 'https://github.com/bellabling/friendly-time.git'   // Git repository URL
+group = 'com.bellabling'
 version = '0.0.1'
 
 android {
@@ -58,36 +59,26 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }
 
-install {
-    repositories.mavenInstaller {
-        pom {
-            project {
-                packaging 'jar'
+bintray {
+    user = System.env.BINTRAY_USER_PERSONAL
+    key = System.env.BINTRAY_APIKEY_PERSONAL
 
-                name 'Provides casual time statements such as "about 10 minutes ago"'
-                url siteUrl
+    configurations = ['archives']
 
-                // Set your license
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-                developers {
-                    developer {
-                        id 'barry'
-                        name 'Barry Drinkwater'
-                        email 'barry.drinkwater@gmail.com'
-                    }
-                }
-                scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
-
-                }
-            }
+    filesSpec {
+        from 'build/friendlytime.jar'
+        into '.'
+    }
+    pkg {
+        repo = 'bellabling-maven'
+        name = 'friendlytime'
+        licenses = ['Apache-2.0']
+        vcsUrl = gitUrl
+        websiteUrl = siteUrl
+        publicDownloadNumbers = true
+        publish = false
+        version {
+            name = version
         }
     }
 }
