@@ -28,6 +28,14 @@ public class FriendlyTime
 	
 	private static final int ONE_SECOND_IN_MILLIS = 1000;
 
+	/**
+	 * Loads the string into the UI
+	 *
+	 * @param timeNow	the current time in milliseconds
+	 * @param timeThen	the time to compare to the current time, in milliseconds
+	 *
+	 * @return 			the string description of the time difference
+	 */
 	public static String getFriendlyTime(long timeNow, long timeThen)
 	{
 		long timeInMillis = timeNow - timeThen;
