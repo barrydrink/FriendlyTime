@@ -6,6 +6,8 @@
 
 # FriendlyTime
 
+[![Join the chat at https://gitter.im/friendly-time/Lobby](https://badges.gitter.im/friendly-time/Lobby.svg)](https://gitter.im/friendly-time/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Provides casual time strings for events in the past. E.g. "about 10 minutes ago".
 
 To use:
