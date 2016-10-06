@@ -34,7 +34,10 @@ captures/
 
 # Intellij
 *.iml
-.idea/workspace.xml
+.idea/
 
 # Keystore files
 *.jks
+.idea/
+friendlytime/libs/
+friendlytime/src/main/res/drawable/
