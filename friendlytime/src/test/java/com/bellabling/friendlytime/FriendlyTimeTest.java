@@ -1,4 +1,4 @@
-package com.barrydrink.friendlytime;
+package com.bellabling.friendlytime;
 
 import org.junit.Assert;
 import org.junit.Test;
