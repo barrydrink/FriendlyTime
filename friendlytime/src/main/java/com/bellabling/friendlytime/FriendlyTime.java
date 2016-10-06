@@ -1,6 +1,5 @@
 package com.bellabling.friendlytime;
 
-
 public class FriendlyTime
 {
 	public static final int ONE_MINUTE = 60;
@@ -151,5 +150,4 @@ public class FriendlyTime
 		
 		return "years ago";
 	}
-
 }
