@@ -39,11 +39,14 @@ public class FriendlyTime
 	public static String getFriendlyTime(long nowTime, long otherTime)
 	{
 		long timeInMillis = nowTime - otherTime;
-		long timeInSecs = timeInMillis / ONE_SECOND_IN_MILLIS;
+		long timeInSecs = Math.abs(timeInMillis) / ONE_SECOND_IN_MILLIS;
 		
 		if(timeInSecs < ONE_MINUTE)
 		{
-			return "seconds ago";
+			if(timeInMillis > 0)
+				return "seconds ago";
+			else
+				return "in less than a minute";
 		}
 		
 		if(timeInSecs < TWO_MINUTES)

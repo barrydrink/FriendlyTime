@@ -229,4 +229,15 @@ public class FriendlyTimeTest
 
 		Assert.assertEquals("years ago", FriendlyTime.getFriendlyTime(nowTime, otherTime));
 	}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+	@Test
+	public void testGetFriendlyTimeWithASecondsToGo()
+	{
+		long nowTime = 10000;
+		long otherTime = 15000;
+
+		Assert.assertEquals("in less than a minute", FriendlyTime.getFriendlyTime(nowTime, otherTime));
+	}
 }
