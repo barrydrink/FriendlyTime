@@ -51,114 +51,183 @@ public class FriendlyTime
 		
 		if(timeInSecs < TWO_MINUTES)
 		{
-			return "about a minute ago";
+			if(timeInMillis > 0)
+				return "about a minute ago";
+			else
+				return "in about a minute";
 		}
 		
 		if(timeInSecs < TEN_MINUTES)
 		{
-			return "minutes ago";
+			if(timeInMillis > 0)
+				return "minutes ago";
+			else
+				return "in a few minutes";
 		}
 		
 		if(timeInSecs < FIFTEEN_MINUTES)
 		{
-			return "about 10 minutes ago";
+			if(timeInMillis > 0)
+				return "about 10 minutes ago";
+			else
+				return "in about 10 minutes";
 		}
 		
 		if(timeInSecs < TWENTY_MINUTES)
 		{
-			return "about 15 minutes ago";
+			if(timeInMillis > 0)
+				return "about 15 minutes ago";
+			else
+				return "in about 15 minutes";
 		}
 		
 		if(timeInSecs < TWENTY_FIVE_MINUTES)
 		{
-			return "about 20 minutes ago";
+			if(timeInMillis > 0)
+				return "about 20 minutes ago";
+			else
+				return "in about 20 minutes";
 		}
 		
 		if(timeInSecs < THIRTY_MINUTES)
 		{
-			return "about 25 minutes ago";
+			if(timeInMillis > 0)
+				return "about 25 minutes ago";
+			else
+				return "in about 25 minutes";
 		}
 		
 		if(timeInSecs < FORTY_FIVE_MINUTES)
 		{
-			return "half an hour ago";
+			if(timeInMillis > 0)
+				return "half an hour ago";
+			else
+				return "in about half an hour";
 		}
 		
 		if(timeInSecs < ONE_HOUR)
 		{
-			return "about 45 minutes ago";
+			if(timeInMillis > 0)
+				return "about 45 minutes ago";
+			else
+				return "in about 45 minutes";
 		}
 		
 		if(timeInSecs < TWO_HOURS)
 		{
-			return "about an hour ago";
+			if(timeInMillis > 0)
+				return "about an hour ago";
+			else
+				return "in about an hour";
 		}
 		
 		if(timeInSecs < THREE_HOURS)
 		{
-			return "a couple of hours ago";
+			if(timeInMillis > 0)
+				return "a couple of hours ago";
+			else
+				return "in a couple of hours";
 		}
 		
 		if(timeInSecs < TWELVE_HOURS)
 		{
-			return "a few hours ago";
+			if(timeInMillis > 0)
+				return "a few hours ago";
+			else
+				return "in a few hours";
 		}
 		
 		if(timeInSecs < EIGHTEEN_HOURS)
 		{
-			return "about 12 hours ago";
+			if(timeInMillis > 0)
+				return "about 12 hours ago";
+			else
+				return "in about 12 hours";
 		}
 		
 		if(timeInSecs < ONE_DAY)
 		{
-			return "about 18 hours ago";
+			if(timeInMillis > 0)
+				return "about 18 hours ago";
+			else
+				return "in about 18 hours";
 		}
 
 		if(timeInSecs < TWO_DAYS)
 		{
-			return "yesterday";
+			if(timeInMillis > 0)
+				return "yesterday";
+			else
+				return "tomorrow";
 		}
 
 		if(timeInSecs < THREE_DAYS)
 		{
-			return "a couple of days ago";
+			if(timeInMillis > 0)
+				return "a couple of days ago";
+			else
+				return "in a couple of days";
 		}
 
 		if(timeInSecs < ONE_WEEK)
 		{
-			return "days ago";
+			if(timeInMillis > 0)
+				return "days ago";
+			else
+				return "in a few days";
 		}
 
 		if(timeInSecs < TWO_WEEKS)
 		{
-			return "about a week ago";
+			if(timeInMillis > 0)
+				return "about a week ago";
+			else
+				return "in about a week";
 		}
 
 		if(timeInSecs < THREE_WEEKS)
 		{
-			return "a couple of weeks ago";
+			if(timeInMillis > 0)
+				return "a couple of weeks ago";
+			else
+				return "in a couple of weeks";
 		}
 
 		if(timeInSecs < TWO_MONTHS)
 		{
-			return "weeks ago";
+			if(timeInMillis > 0)
+				return "weeks ago";
+			else
+				return "in a few weeks";
 		}
 
 		if(timeInSecs < ONE_YEAR)
 		{
-			return "months ago";
+			if(timeInMillis > 0)
+				return "months ago";
+			else
+				return "in a few months";
 		}
 
 		if(timeInSecs < TWO_YEARS)
 		{
-			return "about a year ago";
+			if(timeInMillis > 0)
+				return "about a year ago";
+			else
+				return "in about a year";
 		}
 		
 		if(timeInSecs < THREE_YEARS)
 		{
-			return "a couple of years ago";
+			if(timeInMillis > 0)
+				return "a couple of years ago";
+			else
+				return "in a couple of years";
 		}
-		
-		return "years ago";
+
+		if(timeInMillis > 0)
+			return "years ago";
+		else
+			return "years from now";
 	}
 }
