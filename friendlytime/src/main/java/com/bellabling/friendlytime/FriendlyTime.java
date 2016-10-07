@@ -31,14 +31,14 @@ public class FriendlyTime
 	/**
 	 * Loads the string into the UI
 	 *
-	 * @param timeNow	the current time in milliseconds
-	 * @param timeThen	the time to compare to the current time, in milliseconds
+	 * @param nowTime	the current time in milliseconds
+	 * @param otherTime	the time to compare to the current time, in milliseconds
 	 *
 	 * @return 			the string description of the time difference
 	 */
-	public static String getFriendlyTime(long timeNow, long timeThen)
+	public static String getFriendlyTime(long nowTime, long otherTime)
 	{
-		long timeInMillis = timeNow - timeThen;
+		long timeInMillis = nowTime - otherTime;
 		long timeInSecs = timeInMillis / ONE_SECOND_IN_MILLIS;
 		
 		if(timeInSecs < ONE_MINUTE)
