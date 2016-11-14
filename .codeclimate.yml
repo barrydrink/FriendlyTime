@@ -3,11 +3,9 @@ engines:
     enabled: true
   checkstyle:
     enabled: true
-	# ... CONFIG CONTENT ...
     checks:
       com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck:
         enabled: false
-	# ... CONFIG CONTENT ...
     channel: "beta"
   pmd:
     enabled: true
